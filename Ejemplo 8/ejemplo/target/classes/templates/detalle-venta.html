@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Venta</title>
+    <link rel="stylesheet" th:href="@{/detalle-venta.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Synaptech</h2>
+
+    <div class="nav-buttons">
+        <a th:href="@{/home}"><button>Home</button></a>
+        <a th:href="@{/clientes}"><button>Clientes</button></a>
+        <a th:href="@{/usuarios}"><button>Usuarios</button></a>
+        <a th:href="@{/productos}"><button>Productos</button></a>
+        <a th:href="@{/ventas}"><button>Ventas</button></a>
+        <a th:href="@{/detalle-venta}"><button>Detalle de la venta</button></a>
+    </div>
+
+    <a th:href="@{/logout}">
+        <button class="logout">Cerrar sesión</button>
+    </a>
+</div>
+
+<!-- CONTENIDO -->
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+            <h1>Gestión de Detalle de Venta</h1>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form th:action="@{/detalle-venta/guardar}" th:object="${detalle}" method="post">
+
+            <input type="hidden" th:field="*{codigodetalleventa}">
+
+            <input type="number" th:field="*{cantidad}" placeholder="Cantidad" required>
+
+            <input type="number" step="0.01" th:field="*{preciounitario}" placeholder="Precio Unitario" required>
+
+            <input type="number" step="0.01" th:field="*{subtotal}" placeholder="Subtotal">
+
+            <input type="number" th:field="*{codigoproducto}" placeholder="Código Producto">
+
+            <input type="number" th:field="*{codigoventa}" placeholder="Código Venta">
+
+            <button type="submit" class="save-btn">Guardar</button>
+
+        </form>
+
+        <!-- TABLA -->
+        <table>
+
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+                <th>Producto</th>
+                <th>Venta</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="d : ${detalles}">
+                <td th:text="${d.codigodetalleventa}"></td>
+                <td th:text="${d.cantidad}"></td>
+                <td th:text="${d.preciounitario}"></td>
+                <td th:text="${d.subtotal}"></td>
+                <td th:text="${d.codigoproducto}"></td>
+                <td th:text="${d.codigoventa}"></td>
+
+                <td>
+                    <a th:href="@{'/detalle-venta/editar/' + ${d.codigodetalleventa}}">
+                        <button class="edit">Editar</button>
+                    </a>
+
+                    <a th:href="@{'/detalle-venta/eliminar/' + ${d.codigodetalleventa}}"
+                       onclick="return confirm('¿Eliminar este detalle?');">
+                        <button class="delete">Eliminar</button>
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

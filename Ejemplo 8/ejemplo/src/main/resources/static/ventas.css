@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e9f2ff, #f7f9fc);
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg, rgb(16, 137, 211), rgb(18, 177, 209));
+  padding: 15px 25px;
+  color: white;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-buttons button {
+  background: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(16, 137, 211);
+  transition: 0.3s;
+}
+
+.nav-buttons button:hover {
+  transform: scale(1.05);
+  background: rgb(16, 137, 211);
+  color: white;
+}
+
+/* LOGOUT */
+.logout {
+  background: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(16, 137, 211);
+}
+
+.logout:hover {
+  transform: scale(1.05);
+}
+
+/* CONTENEDOR */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  width: 95%;
+  max-width: 1000px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.header h1 {
+  color: rgb(16, 137, 211);
+}
+
+/* BOTÓN NUEVO */
+.add-btn {
+  background: rgb(16, 137, 211);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: rgb(10, 120, 190);
+}
+
+/* TABLA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: rgb(16, 137, 211);
+  color: white;
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+/* BOTONES ACCIONES */
+.edit {
+  background: #ffc107;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete {
+  background: #dc3545;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ESTADO */
+.activo {
+  background: #28a745;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+}

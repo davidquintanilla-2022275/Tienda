@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos</title>
+  <link rel="stylesheet" th:href="@{/productos.css}">
+</head>
+
+<body>
+
+
+<div class="navbar">
+  <h2>Synaptech</h2>
+
+  <div class="nav-buttons">
+    <a th:href="@{/home}"><button>Home</button></a>
+    <a th:href="@{/clientes}"><button>Clientes</button></a>
+    <a th:href="@{/usuarios}"><button>Usuarios</button></a>
+    <a th:href="@{/productos}"><button>Productos</button></a>
+    <a th:href="@{/ventas}"><button>Ventas</button></a>
+    <a th:href="@{/detalle-venta}"><button>Detalle de la venta</button></a>
+  </div>
+
+  <a th:href="@{/logout}">
+    <button class="logout">Cerrar sesión</button>
+  </a>
+</div>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="header">
+      <h1>Gestión de Productos</h1>
+    </div>
+
+    <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+
+      <input type="hidden" th:field="*{codigoproducto}">
+
+      <div class="form-group">
+
+        <input type="text" th:field="*{nombreproducto}" placeholder="Nombre" required>
+
+        <input type="number" step="0.01" th:field="*{precio}" placeholder="Precio">
+
+        <input type="number" th:field="*{stok}" placeholder="Stock">
+
+        <select th:field="*{estado}">
+          <option value="1">Activo</option>
+          <option value="0">Inactivo</option>
+        </select>
+
+      </div>
+
+      <button type="submit" class="save-btn">Guardar</button>
+
+    </form>
+
+    <table>
+
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <tr th:each="p : ${productos}">
+        <td th:text="${p.codigoproducto}"></td>
+        <td th:text="${p.nombreproducto}"></td>
+        <td th:text="${p.precio}"></td>
+        <td th:text="${p.stok}"></td>
+        <td th:text="${p.estado == 1 ? 'Activo' : 'Inactivo'}"></td>
+
+        <td>
+          <a th:href="@{'/productos/editar/' + ${p.codigoproducto}}">
+            <button class="edit">Editar</button>
+          </a>
+
+          <a th:href="@{'/productos/eliminar/' + ${p.codigoproducto}}"
+             onclick="return confirm('¿Eliminar producto?');">
+            <button class="delete">Eliminar</button>
+          </a>
+        </td>
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <link rel="stylesheet" th:href="@{/clientes.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Synaptech</h2>
+
+    <div class="nav-buttons">
+        <a th:href="@{/home}"><button>Home</button></a>
+        <a th:href="@{/clientes}"><button>Clientes</button></a>
+        <a th:href="@{/usuarios}"><button>Usuarios</button></a>
+        <a th:href="@{/productos}"><button>Productos</button></a>
+        <a th:href="@{/ventas}"><button>Ventas</button></a>
+        <a th:href="@{/detalle-venta}"><button>Detalle de la venta</button></a>
+    </div>
+
+    <a th:href="@{/logout}">
+        <button class="logout">Cerrar sesión</button>
+    </a>
+</div>
+
+<!-- CONTENIDO -->
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+            <h1>Gestión de Clientes</h1>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+
+            <input type="hidden" th:field="*{dpicliente}">
+
+            <input type="text" th:field="*{nombrecliente}" placeholder="Nombre" required>
+
+            <input type="text" th:field="*{apellidocliente}" placeholder="Apellido" required>
+
+            <input type="text" th:field="*{direccion}" placeholder="Dirección">
+
+            <select th:field="*{estado}">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+
+            <button type="submit" class="save-btn">Guardar</button>
+
+        </form>
+
+        <!-- TABLA -->
+        <table>
+
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="c : ${clientes}">
+                <td th:text="${c.dpicliente}"></td>
+                <td th:text="${c.nombrecliente}"></td>
+                <td th:text="${c.apellidocliente}"></td>
+                <td th:text="${c.direccion}"></td>
+                <td th:text="${c.estado == 1 ? 'Activo' : 'Inactivo'}"></td>
+
+                <td>
+                    <a th:href="@{'/clientes/editar/' + ${c.dpicliente}}">
+                        <button class="edit">Editar</button>
+                    </a>
+
+                    <a th:href="@{'/clientes/eliminar/' + ${c.dpicliente}}"
+                       onclick="return confirm('¿Eliminar cliente?');">
+                        <button class="delete">Eliminar</button>
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="container">
+    <form class="login-form" action="/login" method="post">
+        <h2>Bienvenido</h2>
+
+        <div class="input-group">
+            <input type="text" name="username" required>
+            <label>Usuario</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" required>
+            <label>Contraseña</label>
+        </div>
+
+        <button type="submit">Entrar</button>
+
+        <p class="extra">
+            ¿No tienes cuenta? <a href="/register">Crear cuenta</a>
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

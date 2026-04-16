@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e9f2ff, #f7f9fc);
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg, rgb(16, 137, 211), rgb(18, 177, 209));
+  padding: 15px 25px;
+  color: white;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-buttons button,
+.logout {
+  background: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(16, 137, 211);
+  transition: 0.3s;
+}
+
+.nav-buttons button:hover,
+.logout:hover {
+  transform: scale(1.05);
+  background: rgb(16, 137, 211);
+  color: white;
+}
+
+/* CONTENEDOR */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  width: 95%;
+  max-width: 1000px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.header h1 {
+  color: rgb(16, 137, 211);
+}
+
+/* BOTÓN NUEVO */
+.add-btn {
+  background: rgb(16, 137, 211);
+  color: white;
+  border: 2px solid rgb(16, 137, 211);
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: white;
+  color: rgb(16, 137, 211);
+  transform: scale(1.05);
+}
+
+/* TABLA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: rgb(16, 137, 211);
+  color: white;
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+/* BOTONES ACCIONES */
+.edit {
+  background: #ffc107;
+  color: white;
+  border: 2px solid #ffc107;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit:hover {
+  background: white;
+  color: #ffc107;
+}
+
+.delete {
+  background: #dc3545;
+  color: white;
+  border: 2px solid #dc3545;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background: white;
+  color: #dc3545;
+}
+
+/* ESTADO */
+.activo {
+  background: #28a745;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* ===== FORMULARIO ===== */
+form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* INPUTS */
+form input,
+form select {
+  flex: 1;
+  min-width: 150px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* EFECTOS INPUT */
+form input:focus,
+form select:focus {
+  border-color: rgb(16, 137, 211);
+  box-shadow: 0 0 8px rgba(16, 137, 211, 0.3);
+  transform: scale(1.03);
+}
+
+form input:hover,
+form select:hover {
+  border-color: rgb(16, 137, 211);
+}
+
+/* BOTÓN GUARDAR */
+.save-btn {
+  background: #28a745;
+  color: white;
+  border: 2px solid #28a745;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  background: white;
+  color: #28a745;
+  transform: scale(1.05);
+}

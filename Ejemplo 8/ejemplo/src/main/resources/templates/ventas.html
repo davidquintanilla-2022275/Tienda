@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ventas</title>
+    <link rel="stylesheet" th:href="@{/ventas.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Synaptech</h2>
+
+    <div class="nav-buttons">
+        <a th:href="@{/home}"><button>Home</button></a>
+        <a th:href="@{/clientes}"><button>Clientes</button></a>
+        <a th:href="@{/usuarios}"><button>Usuarios</button></a>
+        <a th:href="@{/productos}"><button>Productos</button></a>
+        <a th:href="@{/ventas}"><button>Ventas</button></a>
+        <a th:href="@{/detalle-venta}"><button>Detalle de la venta</button></a>
+    </div>
+
+    <a th:href="@{/logout}">
+        <button class="logout">Cerrar sesión</button>
+    </a>
+</div>
+
+<!-- CONTENIDO -->
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+            <h1>Gestión de Ventas</h1>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form th:action="@{/ventas/guardar}" th:object="${venta}" method="post">
+
+            <input type="hidden" th:field="*{codigoventa}">
+
+            <input type="date" th:field="*{fechatotal}" required>
+
+            <input type="number" step="0.01" th:field="*{total}" placeholder="Total" required>
+
+            <input type="text" th:field="*{dpi_cliente}" placeholder="DPI Cliente" required>
+
+            <input type="number" th:field="*{codigousuario}" placeholder="Usuario" required>
+
+            <select th:field="*{estado}">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+
+            <button type="submit" class="save-btn">Guardar</button>
+
+        </form>
+
+        <!-- TABLA -->
+        <table>
+
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Cliente</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="v : ${ventas}">
+                <td th:text="${v.codigoventa}"></td>
+                <td th:text="${v.fechatotal}"></td>
+                <td th:text="${v.total}"></td>
+                <td th:text="${v.dpi_cliente}"></td>
+                <td th:text="${v.codigousuario}"></td>
+                <td th:text="${v.estado == 1 ? 'Activo' : 'Inactivo'}"></td>
+
+                <td>
+                    <a th:href="@{'/ventas/editar/' + ${v.codigoventa}}">
+                        <button class="edit">Editar</button>
+                    </a>
+
+                    <a th:href="@{'/ventas/eliminar/' + ${v.codigoventa}}"
+                       onclick="return confirm('¿Eliminar venta?');">
+                        <button class="delete">Eliminar</button>
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
